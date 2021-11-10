@@ -106,7 +106,7 @@ const FileInputBase: ForwardRefRenderFunction<
           config
         );
 
-        setImageUrl(response.data.data.url);
+        setImageUrl(response?.data?.data?.url);
         setLocalImageUrl(URL.createObjectURL(event.target.files[0]));
       } catch (err) {
         if (err?.message === 'Cancelled image upload.') return;
@@ -217,9 +217,7 @@ const FileInputBase: ForwardRefRenderFunction<
           onChange={handleImageUpload}
           ref={ref}
           type="file"
-          style={{
-            display: 'none',
-          }}
+          style={{ display: 'none' }}
           {...rest}
         />
       </FormLabel>
