@@ -13,7 +13,7 @@ export function useImages(): IUseImages {
     hasNextPage: hasMoreImages,
   } = useInfiniteQuery('images', fetchAllImages, {
     getNextPageParam: (lastPage, _) => {
-      return lastPage.after ?? null;
+      return lastPage?.after ?? null;
     },
   });
 

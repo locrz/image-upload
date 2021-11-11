@@ -1,17 +1,17 @@
 import { api } from './api';
 import { IApiResponse } from './types';
 
+interface IFetchAllImages {
+  pageParam?: number | null;
+}
+
 export const fetchAllImages = async ({
   pageParam,
-}: any): Promise<IApiResponse> => {
-  const response = await api.get<IApiResponse>(
-    `/api/images?after=${pageParam ?? 0}`
-  );
-
-  const images = response.data;
-
-  console.log(images);
-  return images;
+}: IFetchAllImages): Promise<IApiResponse> => {
+  const response = await api.get<IApiResponse>(`/api/images`, {
+    params: { after: pageParam ?? 0 },
+  });
+  return response.data;
 };
 
 export const createImage = (image: {
